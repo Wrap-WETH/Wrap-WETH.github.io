@@ -1,0 +1,107 @@
+{
+ "keyword": "wrap weth",
+ "h1": "Wrap WETH",
+ "brand": "WETH",
+ "niche": "token",
+ "verb": "Wrap",
+ "title": "Wrap WETH - Open App",
+ "meta_description": "wrap weth with a verified ETH-to-WETH route; open the app, connect your wallet, and confirm the ERC-20 token on Ethereum.",
+ "palette": {
+  "mode": "dark",
+  "bg": "#0B0E17",
+  "accent": "#627EEA",
+  "ink": "#F7FAFC"
+ },
+ "hero_h2": "Convert native ETH into an ERC-20-ready asset",
+ "hero_lead": "wrap weth by converting native ETH into Wrapped Ether for ERC-20 DeFi use, with a direct app path and contract checks before you sign.",
+ "badge": "Ethereum",
+ "widget": {
+  "from": "ETH",
+  "from_net": "Ethereum",
+  "to": "WETH",
+  "to_net": "Ethereum",
+  "action": "Open WETH App"
+ },
+ "trust": [
+  "WETH9 contract",
+  "ERC-20 token",
+  "1:1 ETH wrapper"
+ ],
+ "what_is": "WETH is Wrapped Ether, an ERC-20 representation of ETH created when ETH is deposited into the WETH9 smart contract. The Ethereum Mainnet contract is listed on <a href=\"https://etherscan.io/address/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2\">Etherscan</a>.",
+ "how": [
+  {
+   "t": "Open the route",
+   "d": "Use the official WETH destination and keep the domain in view before connecting a wallet."
+  },
+  {
+   "t": "Connect on Ethereum",
+   "d": "Select Ethereum Mainnet, connect a self-custody wallet, and keep some ETH unwrapped for gas."
+  },
+  {
+   "t": "Choose ETH to WETH",
+   "d": "Enter the ETH amount; the WETH9 contract credits WETH against deposited ETH."
+  },
+  {
+   "t": "Confirm on-chain",
+   "d": "Review the network, contract address, and wallet simulation, then sign only if everything matches."
+  }
+ ],
+ "points": [
+  {
+   "h": "ERC-20 compatibility",
+   "p": "WETH gives ETH an ERC-20 interface used by many DeFi contracts; Ethereum's <a href=\"https://ethereum.org/developers/docs/standards/tokens/erc-20/\">ERC-20 docs</a> explain the standard."
+  },
+  {
+   "h": "Reversible flow",
+   "p": "Wrapping deposits ETH into WETH9; unwrapping reduces your WETH balance and releases native ETH through the same contract logic."
+  },
+  {
+   "h": "Address-first safety",
+   "p": "On Ethereum Mainnet, the commonly referenced WETH9 address is 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2; verify it before signing."
+  }
+ ],
+ "eeat": [
+  {
+   "text": "Wrapped Ether website",
+   "url": "https://weth.io/"
+  },
+  {
+   "text": "WETH9 contract on Etherscan",
+   "url": "https://etherscan.io/address/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+  },
+  {
+   "text": "ERC-20 token standard",
+   "url": "https://ethereum.org/developers/docs/standards/tokens/erc-20/"
+  }
+ ],
+ "faq": [
+  {
+   "q": "What does wrap weth mean?",
+   "a": "It usually means converting native ETH into WETH, the ERC-20 version of ETH used by many Ethereum apps.",
+   "open": true
+  },
+  {
+   "q": "Is wrap weth the same as swapping ETH?",
+   "a": "It is not a market swap in the usual sense; ETH is deposited into the WETH contract and WETH is credited at the contract level, while gas is still paid in ETH.",
+   "open": false
+  },
+  {
+   "q": "Which contract should I check before I wrap weth?",
+   "a": "On Ethereum Mainnet, verify the WETH9 contract at <a href=\"https://etherscan.io/address/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2\">0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2</a> before signing.",
+   "open": false
+  },
+  {
+   "q": "Can I unwrap after I wrap weth?",
+   "a": "Yes. Unwrapping reverses the WETH position back to native ETH through the contract or a wallet interface that supports it.",
+   "open": false
+  },
+  {
+   "q": "Do I need ETH gas to wrap weth?",
+   "a": "Yes. Keep ETH in the same wallet and network for gas; WETH itself does not pay Ethereum transaction fees.",
+   "open": false
+  }
+ ],
+ "official_url": "https://weth.io/",
+ "official_domain": "weth.io",
+ "footer_note": "wrap-weth.github.io is not the official app; verify weth.io and the WETH9 contract before signing; educational content, not financial advice."
+}
