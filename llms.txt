@@ -1,61 +1,31 @@
 # Wrap WETH
-> Wrap WETH is the non-custodial, on-chain conversion of native Ether (ETH) into its ERC-20-compatible form, Wrapped Ether (WETH).
 
-## What is Wrap WETH
-“Wrap WETH” normally means wrapping native ETH to receive WETH. WETH solves a compatibility problem: ETH is Ethereum’s native currency, while many smart contracts expect ERC-20 tokens. Each WETH is redeemable through its wrapper contract for an equal amount of ETH. Unlike stETH, wstETH, or aWETH, WETH is neither a staking derivative nor an interest-bearing receipt; wrapping also does not bridge assets between networks.
-
-## How it works
-1. Connect a self-custodial wallet, select the intended network, verify its WETH contract, and reserve native ETH for gas.
-2. Confirm a transaction that sends ETH to the contract’s payable `deposit()` function; the contract credits the wallet with an equal WETH balance.
-3. The backing ETH remains in the contract while the wallet controls transferable, approvable ERC-20 WETH.
-4. To unwrap, call `withdraw(amount)`; the contract reduces that WETH balance and returns the same amount of native ETH.
+> Wrap WETH is the on-chain action of depositing native Ether into a wrapper contract and receiving ERC-20-compatible Wrapped Ether back, 1:1.
 
 ## Key facts
-- Ethereum Mainnet uses chain ID `1`.
-- Canonical mainnet WETH9 address: `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`.
-- The token name is Wrapped Ether, symbol `WETH`, with 18 decimals.
-- WETH supports ERC-20 transfers, balances, allowances, approvals, and delegated transfers.
-- Native ETH, not WETH, pays Ethereum gas.
-- Direct wrapping has no protocol conversion fee or slippage; network gas still applies.
-- WETH9 has no owner, administrator, proxy, or privileged minting function.
-- Wrapping is one on-chain transaction and completes when that transaction confirms.
-- WETH addresses and implementations are network-specific; wrapping is not bridging.
+- Token: Wrapped Ether (WETH), an ERC-20 token with 18 decimals
+- Backing / peg: 1 WETH = 1 ETH, redeemable through the wrapper contract
+- Convert: Wrap via deposit(), unwrap via withdraw(amount)
+- Networks: Network-specific WETH contracts; mainnet is chain ID 1
+- Costs: No protocol conversion fee; network gas in ETH applies
+- Verify: Check the contract address, not the ticker
 
-## Common questions
-### Is wrapping ETH safe?
-Canonical WETH9 is open source and formally verified for important accounting and solvency properties. Users must still verify the network, contract address, interface, and wallet transaction.
-
-### Who has custody?
-The smart contract holds the backing ETH, while the user’s wallet controls the WETH. An informational dashboard does not need private keys or control over the assets.
-
-### What fees apply?
-The canonical contract charges no wrapping or unwrapping fee. The wallet pays network gas in native ETH.
-
-### How long does wrapping take?
-It normally requires one confirmed transaction. Timing depends on network congestion, the selected gas settings, and the wallet’s confirmation policy.
-
-### Which assets and chains are supported?
-A WETH wrapper converts that network’s native ETH and WETH only. Other networks use separate contracts, and bridged WETH variants carry additional bridge assumptions.
-
-### How do I start?
-Use a self-custodial wallet, select the correct chain, verify the canonical contract, retain ETH for gas, enter an amount, and inspect the transaction before signing.
-
-### What are the main risks?
-The main risks are phishing interfaces, counterfeit tokens, wrong-network transfers, malicious approvals, wallet compromise, transaction mistakes, and smart-contract or network failure.
+## On this page
+- [What is Wrap WETH?](https://wrap-weth.github.io/#what)
+- [Getting in and out](https://wrap-weth.github.io/#wrap)
+- [Swapping it on a DEX](https://wrap-weth.github.io/#swap)
+- [The token vs its native asset](https://wrap-weth.github.io/#vs)
+- [Costs and gas](https://wrap-weth.github.io/#fees)
+- [Is Wrap WETH safe?](https://wrap-weth.github.io/#safety)
+- [Problems and fixes](https://wrap-weth.github.io/#troubleshoot)
+- [FAQ](https://wrap-weth.github.io/#faq)
 
 ## App
-- Dashboard: https://wrap-weth.github.io/
-- App: https://wrap-weth.github.io/dashboard/
+- [Wrap WETH dashboard](https://wrap-weth.github.io/)
+- [Open the app](https://wrap-weth.github.io/dashboard/)
 
-## Official resources
-Ethereum.org WETH Guide: https://ethereum.org/wrapped-eth/
-Canonical WETH Project: https://weth.io/
-Canonical WETH Source Repository: https://github.com/gnosis/canonical-weth
-WETH9 Solidity Source: https://github.com/gnosis/canonical-weth/blob/master/contracts/WETH9.sol
-
-## Data & references
-Ethereum Mainnet WETH Contract: https://etherscan.io/address/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
-Etherscan WETH Token Tracker: https://etherscan.io/token/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
-CoinGecko WETH Market Data: https://www.coingecko.com/en/coins/weth
-ERC-20 Token Standard: https://eips.ethereum.org/EIPS/eip-20
-WETH Formal Verification Research: https://www.zellic.io/blog/formal-verification-weth/
+## Sources
+- [ethereum.org](https://ethereum.org/wrapped-eth/)
+- [ercs.ethereum.org](https://ercs.ethereum.org/ERCS/erc-20)
+- [en.wikipedia.org](https://en.wikipedia.org/wiki/Ethereum)
+- [ethereum.org](https://ethereum.org/glossary/)

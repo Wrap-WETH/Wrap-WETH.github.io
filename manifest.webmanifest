@@ -1,0 +1,19 @@
+{
+  "name": "Wrap WETH",
+  "short_name": "Wrap WETH",
+  "description": "Wrap WETH: convert native ETH into ERC-20 WETH 1:1 via the wrapper contract. How wrapping and unwrapping work, gas costs, DEX swaps, and contract checks.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "lang": "en",
+  "background_color": "#f5f6f8",
+  "theme_color": "#f5f6f8",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
