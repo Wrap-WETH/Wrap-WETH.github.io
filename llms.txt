@@ -1,42 +1,46 @@
-# Wrap WETH — Technical Reference & Protocol Knowledge Base
+# Wrap WETH
 
-> Wrap WETH: convert native ETH into ERC-20 WETH 1:1 via the wrapper contract. How wrapping and unwrapping work, gas costs, DEX swaps, and contract checks.
+> Wrap WETH converts ETH into WETH at 1:1 and unwraps WETH back into ETH on Ethereum.
 
-## Key Facts & Smart Contract Specs
-- **Protocol Class**: Non-Custodial Web3 Application & Smart Router
-- **Supported Chain IDs**: 1
-- **Protocol Fee Structure**: 0.00% Markup Fee (Standard Network Execution Gas Only)
-- **Custody Architecture**: Non-custodial — funds escrowed directly in smart contracts; wallet signs all approvals
-- **Verified Contract Addresses**: `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`
-- **Security & Audits**: Open-source contracts audited by leading security firms; risk indexed on L2BEAT & Etherscan
-- **Practitioner Test Verification**: Tested & Verified by Practitioner (July 2026)
+## Pages
+- [Wrap WETH](https://insert_url/): amount calculator, gas budget calculator, ETH and WETH comparison, contract information, and FAQ.
+- [Wrap WETH application](https://insert_url/dashboard/): wrap and unwrap entry point.
 
-## How Wrap WETH Works
+## Conversion
+- Direct WETH9 deposits and withdrawals convert token amounts at 1:1.
+- WETH is an ERC-20 representation of ETH held in the wrapper contract.
+- Wrapping and unwrapping each require an Ethereum transaction.
+- Network gas is paid separately in ETH, including before an unwrap.
+- Wrapping keeps assets on the same network.
 
-### 1. Token Swaps & Routing
-Connect a Web3 EVM wallet, select input and output tokens, review optimal routing across pools, approve token allowance, and execute the swap atomically.
+## Gas budget calculator
+The amount calculator accepts up to 18 decimal places. Maximum gas budget in ETH equals gas limit multiplied by max fee in gwei multiplied by 0.000000001. For wrapping, add the ETH amount to that budget. For unwrapping, keep the gas budget available in native ETH before the transaction. The charged fee uses gas consumed and the effective gas price.
 
-### 2. Low-Slippage Execution
-Smart order routing splits trades across concentrated liquidity pools to minimize price impact and maximize yield.
+## Ethereum mainnet contract
+WETH9: 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
+Chain ID: 1
 
-## Safety, Audits & Anti-Phishing
-- **Smart Contract Security**: Open-source protocols verified on block explorers.
-- **Anti-Phishing Protocol**: Always verify domain authenticity and check contract approval targets prior to signing Web3 transactions.
+## Frequently asked questions
+### What is the difference between ETH and WETH?
+ETH is Ethereum's native currency, used for gas and transfers. WETH is ETH held in a wrapper contract and represented as an ERC-20 token. Direct wrapping and unwrapping convert the token amount at 1:1.
 
-## Frequently Asked Questions (FAQ)
+### How do I wrap ETH into WETH?
+Open the app, select Wrap, and enter your ETH amount. Keep additional ETH for gas, check the Ethereum network and WETH contract in your wallet, then confirm the deposit. The contract credits the same amount of WETH to your address.
 
-### What fees are charged by Wrap WETH?
-There is zero protocol fee (0.00%). Users pay standard network execution gas.
+### How do I unwrap WETH back to ETH?
+Select Unwrap and enter the WETH amount. Confirm the withdrawal transaction in your wallet. The WETH9 contract removes that WETH balance and returns the equivalent ETH. Keep ETH in your wallet to pay the transaction fee before the withdrawal completes.
 
-### Is Wrap WETH non-custodial?
-Yes, you maintain 100% control of your private keys and assets at all times.
+### Is there slippage when wrapping ETH?
+A direct WETH9 deposit or withdrawal uses a fixed 1:1 conversion and has no liquidity-pool slippage. Network gas is paid separately in ETH. Trading WETH through a liquidity pool follows that pool's market price and fees.
 
-## Internal Sections & App Navigation
-- [What is Wrapped Ether (WETH)?](#what)
-- [How it works](#how)
-- [Time and fees](#fees)
-- [Safety & Audits](#safety)
-- [Troubleshooting & Fixes](#troubleshoot)
-- [Frequently Asked Questions](#faq)
-- [Wrap WETH Dashboard](index.html)
-- [Open Wrap WETH App](dashboard/index.html)
+### Do I need a token approval to wrap or unwrap?
+A direct ETH deposit into WETH9 needs a payable transaction. A direct WETH9 withdrawal uses your own token balance. ERC-20 spending approvals apply when a separate contract, such as a router, spends WETH for you; check the spender and allowance before signing.
+
+### How long does wrapping WETH take?
+Wrapping and unwrapping each take one on-chain transaction with the WETH9 contract. The balance updates when the transaction is included in a block. Inclusion time depends on network demand and your fee settings; finality follows later.
+
+### Can I use WETH on another network?
+WETH exists on several networks, with network-specific contracts and balances. Wrapping on Ethereum keeps your assets on Ethereum. To move assets to another network, use a bridge route and check the destination token contract.
+
+### Does WETH earn staking rewards?
+Wrapping changes ETH into an ERC-20 token. WETH has no built-in staking yield. Rewards from lending, liquidity provision, or staking come from a separate protocol and its own terms.
