@@ -1,149 +1,283 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wrap WETH | Convert ETH to WETH 1:1, Both Ways</title>
-<meta name="description" content="Wrap WETH at a 1:1 ratio: turn ETH into WETH or unwrap WETH to ETH. Calculate your amount, budget Ethereum gas, and review the WETH contract before you start.">
-<meta name="robots" content="index,follow,max-image-preview:large">
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wrap WETH — Convert ETH to WETH 1:1, gas only</title>
+<meta name="description" content="Wrap WETH: convert native ETH into WETH 1:1 by calling deposit() on the canonical contract. Non-custodial, no approval or slippage. Works on Ethereum and L2s.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#f4f5f9">
 <link rel="canonical" href="https://wrap-weth.github.io/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Wrap WETH">
-<meta property="og:title" content="Wrap WETH | Convert ETH to WETH 1:1, Both Ways">
-<meta property="og:description" content="Wrap WETH at a 1:1 ratio: turn ETH into WETH or unwrap WETH to ETH. Calculate your amount, budget Ethereum gas, and review the WETH contract before you start.">
-<meta property="og:url" content="https://wrap-weth.github.io/">
-<meta property="og:image" content="https://wrap-weth.github.io/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Wrap WETH: ETH and WETH conversion at a 1:1 ratio">
-<meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Wrap WETH | Convert ETH to WETH 1:1, Both Ways">
-<meta name="twitter:description" content="Wrap WETH at a 1:1 ratio: turn ETH into WETH or unwrap WETH to ETH. Calculate your amount, budget Ethereum gas, and review the WETH contract before you start.">
-<meta name="twitter:image" content="https://wrap-weth.github.io/og.png">
-<meta name="twitter:image:alt" content="Wrap WETH: ETH and WETH conversion at a 1:1 ratio">
-<meta name="theme-color" content="#F8F9FD">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Wrap WETH"><meta property="og:title" content="Wrap WETH — Convert ETH to WETH 1:1, gas only"><meta property="og:description" content="Wrap WETH: convert native ETH into WETH 1:1 by calling deposit() on the canonical contract. Non-custodial, no approval or slippage. Works on Ethereum and L2s."><meta property="og:url" content="https://wrap-weth.github.io/"><meta property="og:image" content="https://wrap-weth.github.io/og-image.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Wrap WETH — Convert ETH to WETH 1:1, gas only"><meta name="twitter:description" content="Wrap WETH: convert native ETH into WETH 1:1 by calling deposit() on the canonical contract. Non-custodial, no approval or slippage. Works on Ethereum and L2s."><meta name="twitter:image" content="https://wrap-weth.github.io/og-image.png">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://wrap-weth.github.io/#organization","name":"Wrap WETH","url":"https://wrap-weth.github.io/","description":"Wrap WETH: convert native ETH into WETH 1:1 by calling deposit() on the canonical contract. Non-custodial, no approval or slippage. Works on Ethereum and L2s.","logo":{"@type":"ImageObject","@id":"https://wrap-weth.github.io/#logo","url":"https://wrap-weth.github.io/icon.svg","caption":"Wrap WETH"}},{"@type":"WebSite","@id":"https://wrap-weth.github.io/#website","url":"https://wrap-weth.github.io/","publisher":{"@id":"https://wrap-weth.github.io/#organization"},"name":"Wrap WETH"},{"@type":"WebPage","@id":"https://wrap-weth.github.io/#webpage","url":"https://wrap-weth.github.io/","publisher":{"@id":"https://wrap-weth.github.io/#organization"},"name":"Wrap WETH — Convert ETH to WETH 1:1, gas only","isPartOf":{"@id":"https://wrap-weth.github.io/#website"},"mainEntity":{"@id":"https://wrap-weth.github.io/#app"},"breadcrumb":{"@id":"https://wrap-weth.github.io/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://wrap-weth.github.io/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wrap-weth.github.io/"},{"@type":"ListItem","position":2,"name":"Wrap WETH","item":"https://wrap-weth.github.io/"}]},{"@type":"WebApplication","@id":"https://wrap-weth.github.io/#app","url":"https://wrap-weth.github.io/","publisher":{"@id":"https://wrap-weth.github.io/#organization"},"name":"Wrap WETH","applicationCategory":"FinanceApplication","operatingSystem":"Web","description":"Wrap WETH: convert native ETH into WETH 1:1 by calling deposit() on the canonical contract. Non-custodial, no approval or slippage. Works on Ethereum and L2s.","isPartOf":{"@id":"https://wrap-weth.github.io/#website"}},{"@type":"FAQPage","@id":"https://wrap-weth.github.io/#faq","isPartOf":{"@id":"https://wrap-weth.github.io/#webpage"},"about":{"@id":"https://wrap-weth.github.io/#app"},"name":"Wrap WETH FAQ","mainEntity":[{"@type":"Question","name":"What does it mean to wrap WETH?","acceptedAnswer":{"@type":"Answer","text":"Wrapping sends native ETH to the WETH contract, which mints the same amount of WETH to your wallet. WETH is an ERC-20 token, so DEXs, lending markets and order protocols can use it."}},{"@type":"Question","name":"Is wrapping ETH into WETH always 1:1?","acceptedAnswer":{"@type":"Answer","text":"Yes. The contract mints exactly as much WETH as the ETH you deposit, and unwrapping returns ETH at the same rate. There is no market price involved, so no slippage or price impact."}},{"@type":"Question","name":"Do I need to approve anything before wrapping?","acceptedAnswer":{"@type":"Answer","text":"No. Wrapping calls deposit() with your ETH attached, so no token allowance is required. You pay only network gas for that one transaction."}},{"@type":"Question","name":"Which networks can I wrap on?","acceptedAnswer":{"@type":"Answer","text":"Ethereum, Arbitrum, Optimism and Base, each using its own canonical WETH contract. Make sure your wallet is on the right network before you sign, because WETH on one chain is a separate balance from WETH on another."}},{"@type":"Question","name":"Why keep some ETH unwrapped?","acceptedAnswer":{"@type":"Answer","text":"Gas is always paid in native ETH, never in WETH. Without a small ETH balance you cannot sign the wrap, a later approval or an unwrap."}},{"@type":"Question","name":"Can I turn WETH back into ETH?","acceptedAnswer":{"@type":"Answer","text":"Yes, at any time. Unwrapping burns your WETH and returns the same amount of ETH, minus the gas for that transaction."}}]}]}
+</script>
 <style>
-:root{--bg:#f8f9fd;--surface:#fff;--text:#222636;--mute:#62697c;--line:#e0e4ef;--accent:#627EEA;--soft:#edf0fd;--display:Outfit,Inter,sans-serif}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:24px}body{background:var(--bg);color:var(--text);font:16px/1.65 Inter,Arial,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}button,input{font:inherit}button,a,input,summary{-webkit-tap-highlight-color:transparent}button{cursor:pointer}img{display:block;object-fit:contain}a{text-underline-offset:4px}.cd32551{max-width:1200px;margin:auto;padding:0 36px}.c66a97e{position:absolute;left:-9999px}.c66a97e:focus{left:16px;top:16px;z-index:10;background:white;padding:12px}.c6cb3a4 .cd32551{height:94px;display:flex;align-items:center;justify-content:space-between;gap:24px;border-bottom:1px solid var(--line)}.c687609{display:flex;align-items:center;gap:10px;font:500 22px/1 var(--display);text-decoration:none}.c6cb3a4 nav,.c62107e nav{display:flex;gap:30px;font-size:14px}.c6cb3a4 nav a,.c62107e nav a{text-decoration:none;color:var(--mute)}.c6cb3a4 nav a:hover,.c62107e nav a:hover{color:var(--text)}.cca703b{display:inline-flex;align-items:center;justify-content:center;gap:20px;border:1px solid transparent;padding:15px 23px;border-radius:12px;background:var(--accent);color:#171e3c;font-weight:600;text-decoration:none;transition:box-shadow .2s,transform .2s}.cca703b:hover{box-shadow:0 7px 20px #627eea30;transform:translateY(-2px)}.cca703b.cc6cff8{padding:10px 17px;font-size:14px;background:transparent;border-color:#cbd2e7}.cf8579a{padding:46px 0 38px;overflow:hidden}.c5099c5{display:grid;grid-template-columns:1fr 1.06fr;align-items:center;gap:48px}.cc47ce1{padding:8px 0 24px}h1{font:500 clamp(66px,7.7vw,100px)/.98 var(--display);letter-spacing:-.055em;max-width:450px}h1 span{display:block;color:var(--accent)}.ceae24f{font-size:17px;line-height:1.8;color:var(--mute);max-width:425px;margin:25px 0 28px}.ceae24f strong{font-weight:500;color:var(--text)}.cc47ce1>.cca703b{min-width:210px}.cc80b03{display:flex;align-items:center;gap:10px;margin-top:20px;font-size:13px;color:var(--mute)}.cc80b03 img{width:18px;height:18px}.c0a29e6{display:flex;gap:34px;margin-top:42px}.c0a29e6 div{border-left:1px solid #cfd6ec;padding-left:14px}.c0a29e6 b{display:block;font:500 22px/1.3 var(--display)}.c0a29e6 span{font-size:12px;color:var(--mute)}.c3d5bb3{position:relative;min-height:584px;display:flex;align-items:center;justify-content:center;padding:46px 18px 30px}.c3d5bb3:before{content:"";position:absolute;inset:0 24px 0;border:1px solid #c8d1f6;border-radius:260px 260px 120px 120px;background:linear-gradient(165deg,#eef1ff 0%,#e5eafb 48%,#f8f9fd 94%);box-shadow:0 0 0 15px #f0f2fb,0 0 0 16px #e3e8f7,0 0 0 31px #f5f6fc,0 0 0 32px #e9edf8}.c0f7205{position:absolute;top:23px;right:0;left:0;text-align:center;font:400 45px/1 var(--display);letter-spacing:-3px;color:#7e90d0}.c90bdaf{width:100%;max-width:422px;background:white;border:1px solid #dbe1ef;border-radius:23px;padding:23px;position:relative;margin-top:30px;box-shadow:0 24px 50px #354b8a12,0 3px 6px #354b8a05}.c8b8124{position:absolute;inset:0;border-radius:23px;z-index:1}.cddc03d,.cea668a,.c4b25e8,.c4dff59,.c16d472,.c90bdaf .cca703b,.c8aecb1,.cd44a2f{position:relative;z-index:2}.cddc03d{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;pointer-events:none}.c90bdaf h2{font:500 20px/1.2 var(--display);letter-spacing:-.5px;margin:0}.c474b04{font-size:11px;color:var(--mute);display:flex;gap:4px;align-items:center}.c474b04 img{width:15px;height:15px}.cea668a{padding:4px;display:grid;grid-template-columns:1fr 1fr;background:#f1f3f9;border-radius:10px;margin-bottom:17px}.cea668a button{background:transparent;border:0;border-radius:7px;font-size:13px;padding:8px;color:var(--mute);font-weight:500}.cea668a button[aria-pressed="true"]{background:white;color:var(--text);box-shadow:0 2px 6px #2028400c}.c4b25e8,.c4dff59{pointer-events:none;background:#f8f9fc;border:1px solid #e8ebf2;border-radius:13px;padding:13px 16px}.cf38764{font-size:12px;color:var(--mute);display:block;margin-bottom:7px}.cfbb4bd{display:flex;align-items:center;justify-content:space-between;gap:10px}.cfbb4bd input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--text);font:500 30px/1.3 var(--display);border-radius:3px}.c765567{display:flex;align-items:center;gap:5px;font-size:14px;flex-shrink:0;font-weight:600}.c765567 img{width:28px;height:28px}.cbca2b6{position:relative;z-index:3;width:30px;height:30px;margin:-5px auto;border:1px solid #e0e4ef;border-radius:9px;background:white;display:grid;place-items:center;color:var(--accent);font-size:18px;line-height:1}.c4dff59{pointer-events:none;background:#f1f4fe;border-color:#e2e7fa}.c4dff59 output{font:500 30px/1.3 var(--display);overflow-wrap:anywhere;min-width:0}.c16d472{margin:18px 0;display:flex;justify-content:space-between;font-size:12px;color:var(--mute);pointer-events:none}.c16d472 b{font-weight:500;color:var(--text)}.c90bdaf .cca703b{width:100%;padding:12px;gap:10px;font-size:14px}.c8aecb1{text-align:center;color:var(--mute);font-size:11px;margin-top:12px;pointer-events:none}.cd44a2f{font-size:12px;margin:8px 0;color:var(--text)}.cd44a2f:empty{display:none}.cd63eaf{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:25px;margin-top:43px;font-size:13px;color:var(--mute)}.cd63eaf span{display:flex;align-items:center;gap:9px}.c52e87e{color:var(--accent);font-size:18px}.ca6cb20{padding:82px 0;border-top:1px solid var(--line)}h2{font:500 clamp(29px,3.4vw,42px)/1.14 var(--display);letter-spacing:-.035em;margin-bottom:22px}h3{font:500 21px/1.3 var(--display);letter-spacing:-.02em;margin-bottom:8px}.ce22e7e{color:var(--mute)}.cd2522c{display:grid;grid-template-columns:.95fr 1.05fr;gap:90px}.cd2522c p+p{margin-top:18px}.cecd208{padding:12px 0}.c06947b{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px}.c08d27b{display:flex;gap:12px;align-items:center}.c08d27b img{width:36px;height:44px}.c08d27b strong{font:500 32px/1 var(--display);display:block}.c08d27b small{font-size:12px;color:var(--mute)}.c21e8de{color:var(--accent);font-size:32px}.c18bfeb{display:flex;justify-content:space-between;margin:22px 0 24px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:13px;color:var(--mute)}.c63d17f{list-style:none;display:grid;gap:17px}.c63d17f li{display:grid;grid-template-columns:125px 1fr;gap:16px;font-size:14px;color:var(--mute)}.c63d17f h3{font-size:16px;color:var(--text);margin:0}.c63ddf3{background:#fff}.c4d5ac4{display:grid;grid-template-columns:1fr 1fr;gap:90px}.c21d0d3>p{color:var(--mute)}.c4fa00f{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:30px}.c4fa00f p{font-size:14px;color:var(--mute)}.c4fa00f h3{font-size:18px}.cead0c7{border:1px solid var(--line);border-radius:18px;padding:27px;background:var(--bg)}.cead0c7 h3{font-size:23px}.cead0c7>p{font-size:13px;color:var(--mute);margin:8px 0 19px}.c6e30b3{display:grid;grid-template-columns:1fr 1fr;gap:14px}.c6e30b3 label{font-size:12px;color:var(--mute)}.c6e30b3 input{display:block;margin-top:6px;width:100%;padding:11px 12px;border-radius:8px;border:1px solid #d9dfea;background:white;color:var(--text);font-variant-numeric:tabular-nums}.c3c899d{margin-top:20px;border-top:1px solid var(--line);padding-top:16px}.c3c899d div{display:flex;gap:16px;justify-content:space-between;font-size:13px;margin-top:8px}.c3c899d output{text-align:right;font-weight:600;overflow-wrap:anywhere;max-width:60%}.cead0c7 .c03f2c8{margin-bottom:0;font-size:11px}.cc9e7e0{max-width:660px}.c623064{overflow-x:auto;margin-top:30px;border:1px solid var(--line);border-radius:16px;background:#fff}table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:18px 23px;border-bottom:1px solid var(--line);width:33.33%}th{font-weight:600;background:#f0f3fc}td{color:var(--mute)}td:first-child{font-weight:500;color:var(--text)}tr:last-child td{border:0}.caa44ba{background:#edf0fa;border-color:#dce2f3}.c9c67b5{display:grid;grid-template-columns:1fr 1fr;gap:90px}.cfc0278{margin-top:27px;border-top:1px solid #d0d8ef;padding-top:17px}.cfc0278 span{display:block;font-size:12px;margin-bottom:7px;color:var(--mute)}.cfc0278 code{font:12px/1.8 ui-monospace,Consolas,monospace;overflow-wrap:anywhere;user-select:all}.c1447b5{list-style:none;display:grid;gap:23px}.c1447b5 li{border-bottom:1px solid #d6ddef;padding-bottom:21px}.c1447b5 li:last-child{border:0;padding-bottom:0}.c1447b5 p{font-size:14px;color:var(--mute)}.c1447b5 h3{font-size:20px}.ca60e9b{display:grid;grid-template-columns:.8fr 1.2fr;gap:90px}.c5a8e3c p{color:var(--mute);max-width:270px;font-size:15px}.caaa5ee details{border-bottom:1px solid var(--line);padding:20px 0}.caaa5ee details:first-child{padding-top:0}.caaa5ee summary{cursor:pointer;font:500 19px/1.4 var(--display);list-style:none;display:flex;justify-content:space-between;gap:20px}.caaa5ee summary::-webkit-details-marker{display:none}.caaa5ee summary:after{content:"+";color:var(--accent);font:400 24px/1 var(--display)}.caaa5ee details[open] summary:after{content:"\2212"}.caaa5ee p{font-size:14px;color:var(--mute);margin-top:13px;padding-right:26px}.cc97cf3{padding:0 0 65px}.c1e20bb{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:34px 38px;border:1px solid #dbe1f3;border-radius:18px;background:#eef1fc}.c1e20bb h2{font-size:31px;margin-bottom:8px}.c1e20bb p{font-size:14px;color:var(--mute)}.c1e20bb .cca703b{flex-shrink:0}.c62107e{font-size:12px;padding:0 0 28px}.c62107e .cb34a08{border-top:1px solid var(--line);padding-top:27px;display:flex;justify-content:space-between;align-items:center;gap:22px}.c62107e .c687609{font-size:18px}.c62107e nav{font-size:12px;gap:22px}.cf40e07{color:var(--mute)}:focus-visible{outline:3px solid var(--accent);outline-offset:4px}.cfbb4bd input:focus-visible{outline-offset:5px}::selection{background:#dce3ff;color:var(--text)}
-@media(min-width:1400px){.cf8579a{padding-top:62px;padding-bottom:42px}.c5099c5{gap:65px}}
-@media(max-width:1000px){.cd32551{padding:0 28px}.c5099c5{gap:26px;grid-template-columns:.9fr 1.1fr}h1{font-size:76px}.c3d5bb3{padding-left:0;padding-right:0}.c90bdaf{padding:20px}.cd2522c,.c4d5ac4,.c9c67b5,.ca60e9b{gap:40px}.c6cb3a4 nav{gap:19px}.c0a29e6{gap:22px}.cd63eaf{font-size:12px}}
-@media(max-width:760px){.cd32551{padding:0 22px}.c6cb3a4 .cd32551{height:76px}.c6cb3a4 nav{display:none}.c687609{font-size:20px}.cf8579a{padding:35px 0 30px}.c5099c5{grid-template-columns:1fr;gap:10px}.cc47ce1{padding:0;text-align:center}h1{max-width:none;font-size:clamp(54px,10.7vw,76px);letter-spacing:-.045em}h1 span{display:inline}.ceae24f{margin:19px auto 21px;font-size:16px;max-width:440px}.cc47ce1>.cca703b{padding:13px 22px}.cc80b03{justify-content:center;margin-top:16px}.c0a29e6{display:none}.c3d5bb3{min-height:553px;max-width:470px;width:100%;margin:25px auto 0;padding:40px 14px 20px}.c3d5bb3:before{inset:0 22px}.c0f7205{top:18px;font-size:37px}.c90bdaf{margin-top:29px}.cd63eaf{margin-top:30px;justify-content:center;flex-wrap:wrap;gap:8px 20px}.ca6cb20{padding:55px 0}.cd2522c,.c4d5ac4,.c9c67b5,.ca60e9b{grid-template-columns:1fr;gap:30px}h2{max-width:570px}.cecd208{padding:0}.c63d17f li{grid-template-columns:110px 1fr}.c4fa00f{margin-top:23px}.cead0c7{padding:22px}.cc9e7e0 p{font-size:15px}th,td{padding:15px 16px;min-width:145px}table{font-size:13px}.c5a8e3c p{max-width:none}.ca60e9b{gap:28px}.cc97cf3{padding-bottom:38px}.c1e20bb{padding:26px;flex-direction:column;align-items:flex-start;gap:20px}.c1e20bb h2{font-size:29px}.c62107e .cb34a08{flex-wrap:wrap}.c62107e nav{order:3;width:100%;justify-content:space-between}.cf40e07{font-size:11px}}
-@media(max-width:380px){.cd32551{padding:0 17px}.c687609{gap:6px;font-size:18px}.c6cb3a4 .cca703b.cc6cff8{padding:9px 12px}.c90bdaf{padding:17px}.c3d5bb3{padding-left:0;padding-right:0}.c90bdaf h2{font-size:19px}.c474b04{font-size:10px}.cfbb4bd input,.c4dff59 output{font-size:26px}.c765567{font-size:12px}.c6e30b3{gap:9px}.c4fa00f{gap:20px}.c62107e nav{gap:10px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+@font-face{font-family:'Inter';src:url('assets/inter.woff2') format('woff2');font-weight:400 700;font-display:swap}
+@font-face{font-family:'Space Grotesk';src:url('assets/space-grotesk.woff2') format('woff2');font-weight:500 700;font-display:swap}
+:root{
+ --bg:#f4f5f9;--card:#fff;--ink:#11152a;--muted:#737b88;--faint:#aeb4bf;
+ --line:#e9ebf3;--line-2:#dfe2ec;--panel:#f6f7fb;--panel-2:#ebedf5;
+ --accent:#4f68d6;--accent-hover:#4158c0;--accent-ink:#3f57c4;--accent-soft:#e9edfc;--accent-on:#ffffff;--promo:#eef1fd;--text-2:#4b5563;
+ --shadow:0 1px 2px rgba(13,17,28,.04),0 24px 56px -40px rgba(13,17,28,.24);--pico-bg:#fff;--pico-ring:rgba(13,17,28,.06);
+ --ease:cubic-bezier(.2,.7,.2,1);
+ --head:"Space Grotesk","Arial",sans-serif;--body:"Inter","Arial",sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;color:var(--ink);font:15px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;background:var(--bg)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:none;-webkit-mask-image:linear-gradient(#000 0,rgba(0,0,0,.35) 60%,transparent 100%);mask-image:linear-gradient(#000 0,rgba(0,0,0,.35) 60%,transparent 100%)}
+a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;background:none;border:0;color:inherit}
+img{display:block;max-width:100%}
+h1,h2,h3{margin:0;font-family:var(--head);font-weight:500;letter-spacing:-.01em}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
+
+.nav{display:flex;align-items:center;gap:24px;padding:16px 24px;max-width:1280px;margin:0 auto;width:100%}
+.brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--head);font-weight:500;font-size:20px;letter-spacing:-.02em;color:var(--ink);white-space:nowrap;flex:0 0 auto}
+.brand img{width:28px;height:28px}
+.nlinks{display:flex;align-items:center;gap:20px}
+.nlinks a{font-size:14px;font-weight:500;color:var(--muted);white-space:nowrap;transition:color .16s var(--ease)}
+.nlinks a:hover{color:var(--ink)}
+.spacer{flex:1}
+main{flex:1}
+.chain{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 12px;border-radius:10px;background:var(--panel-2);font-weight:500;font-size:14px;color:var(--ink);transition:background-color .16s var(--ease);flex:0 0 auto;white-space:nowrap}
+.chain img{width:20px;height:20px;border-radius:50%}
+.chain:hover{background:var(--line-2)}
+.chain .cv{width:12px;height:12px;color:var(--muted)}
+.connect{display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:10px;background:var(--card);border:1px solid var(--line-2);color:var(--ink);font-weight:500;font-size:14px;transition:background-color .16s var(--ease),border-color .16s var(--ease);flex:0 0 auto;white-space:nowrap}
+.connect:hover{border-color:var(--faint);background:var(--panel)}
+
+.hero{display:flex;flex-direction:column;align-items:center;padding:32px 20px 48px}
+h1{font-size:clamp(36px,4.6vw,48px);line-height:1.08;letter-spacing:-.025em;text-align:center;color:var(--ink);margin:0 0 32px}
+
+.card{width:min(600px,100%);background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+.tabs{display:flex;align-items:center;gap:4px;padding:20px 20px 16px}
+.tab{display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:10px;font-weight:500;font-size:14px;color:var(--muted);transition:background-color .16s var(--ease),color .16s var(--ease)}
+.tab:hover{background:var(--panel-2);color:var(--ink)}
+.tab.on{background:var(--accent-soft);color:var(--accent-ink)}
+.tabs .sp{flex:1}
+.tabs .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:var(--muted);transition:background-color .16s var(--ease),color .16s var(--ease)}
+.tabs .ic:hover{background:var(--panel-2);color:var(--ink)}
+.tabs .ic svg{width:18px;height:18px}
+
+.promo{margin:0 20px;padding:32px;border-radius:12px;background:var(--promo);display:flex;align-items:center;gap:20px}
+.promo-txt{flex:1;min-width:0}
+.promo-h{font-family:var(--head);font-weight:500;font-size:clamp(22px,3.4vw,28px);line-height:1.2;letter-spacing:-.015em;color:var(--ink);margin:0 0 8px;text-wrap:balance}
+.promo-sub{font-size:15px;line-height:1.6;color:var(--text-2);margin:0;max-width:34ch}
+.promo-grid{flex:0 0 auto;display:grid;grid-template-columns:repeat(2,auto);gap:16px}
+.pico{width:52px;height:52px;border-radius:50%;background:var(--pico-bg);box-shadow:0 0 0 1px var(--pico-ring);display:grid;place-items:center;overflow:hidden}
+.pico img{width:100%;height:100%;object-fit:contain;display:block}
+.promo-flow{flex-direction:column;align-items:stretch;gap:24px}
+.promo-flow .promo-sub{max-width:44ch}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.flow li{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}
+.flow li+li::before{content:"";position:absolute;top:22px;right:calc(50% + 30px);width:calc(100% - 52px);height:1px;background:var(--line-2)}
+.fi{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;overflow:hidden;background:var(--pico-bg);box-shadow:0 0 0 1px var(--pico-ring);color:var(--accent-ink)}
+.fi img{width:100%;height:100%;display:block}
+.fi svg{width:20px;height:20px}
+.fi.on{background:var(--accent);color:var(--accent-on);box-shadow:none}
+.flow b{margin-top:4px;font-weight:500;font-size:14px;color:var(--ink)}
+.flow small{font-size:13px;line-height:1.4;color:var(--muted)}
+.cta-wrap{padding:20px}
+.cta{width:100%;height:60px;border-radius:12px;background:var(--accent);color:var(--accent-on);font-weight:500;font-size:16px;transition:background-color .16s var(--ease),transform .12s var(--ease)}
+.cta:hover{background:var(--accent-hover)}
+.cta:active{transform:scale(.99)}
+@media(max-width:470px){.promo{flex-direction:column;align-items:flex-start}.promo-grid{grid-template-columns:repeat(4,auto)}.promo-sub{max-width:none}}
+
+.learn{max-width:720px;margin:48px auto 0;width:100%;padding:0 24px 72px}
+.learn-h{font-size:14px;font-weight:500;color:var(--muted);text-align:center;margin:0 0 12px}
+.lrow{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:flex-start}
+.lcard{flex:0 0 auto;background:transparent;border:1px solid var(--line-2);border-radius:10px;transition:background-color .16s var(--ease),border-color .16s var(--ease)}
+.lcard>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;height:36px;padding:0 12px;font-weight:500;font-size:14px;color:var(--text-2)}
+.lcard>summary::-webkit-details-marker{display:none}
+.lcard:hover{border-color:var(--faint);background:var(--card)}.lcard:hover>summary{color:var(--ink)}
+.lcard .chev{width:6px;height:6px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg);margin-top:-4px;flex-shrink:0;transition:transform .16s var(--ease)}
+.lcard[open]{order:9;flex:0 0 100%;min-width:0;background:var(--card);border-color:var(--line-2);border-radius:16px;margin-top:8px}
+.lcard[open]>summary{height:auto;padding:20px 24px 0;color:var(--muted);font-size:13px}
+.lcard[open] .chev{transform:rotate(225deg);margin-top:4px}
+.lbody{padding:4px 24px 24px;max-width:660px}
+.lbody h2{font-size:22px;line-height:1.3;color:var(--ink);margin:8px 0 4px}
+.lbody h3{font-size:15px;line-height:1.4;color:var(--ink);margin:20px 0 4px}
+.lbody p{margin:0;font-size:15px;line-height:1.7;color:var(--text-2)}
+.lbody p+p{margin-top:8px}
+.lbody ul,.lbody ol{margin:8px 0 0;padding-left:20px}
+.lbody li{font-size:15px;line-height:1.7;color:var(--text-2);margin-bottom:4px}
+.lbody a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
+.lbody strong,.lbody b{color:var(--ink);font-weight:500}
+.lbody .tbl{overflow-x:auto;margin:16px 0 4px}
+.lbody table{width:100%;min-width:420px;border-collapse:collapse;font-size:14px}
+.lbody caption{text-align:left;color:var(--muted);font-size:13px;margin-bottom:8px}
+.lbody th,.lbody td{text-align:left;padding:8px 12px;border:1px solid var(--line-2);vertical-align:top;line-height:1.45}
+.lbody thead th{background:var(--panel);color:var(--ink);font-weight:500}
+.lbody tbody th{background:var(--panel);color:var(--muted);white-space:nowrap;font-weight:500}
+.lbody td{color:var(--text-2)}
+.lfaq h3{margin-top:16px;font-size:16px}
+
+footer{border-top:1px solid var(--line-2);background:var(--card)}
+.foot{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:20px 24px 24px;color:var(--muted);font-size:13px}
+.foot a{color:var(--muted);transition:color .16s var(--ease)}.foot a:hover{color:var(--ink)}.foot .sep{color:var(--faint)}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,8px);background:var(--ink);color:var(--bg);border-radius:12px;padding:12px 16px;font-size:13px;box-shadow:0 16px 40px -16px rgba(13,17,28,.5);z-index:60;opacity:0;visibility:hidden;transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;max-width:calc(100% - 32px)}
+.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+@media(max-width:1120px){.nlinks{display:none}}
+@media(max-width:720px){.chain span{display:none}.chain{padding:0 8px;gap:4px}}
+@media(max-width:560px){
+  .nav{padding:12px 16px;gap:8px}
+  .brand{font-size:16px}
+  .brand img{width:24px;height:24px}
+  .chain{height:36px;padding:0 8px;gap:4px}
+  .chain span{display:none}
+  .connect{height:36px;padding:0 12px;font-size:13px}
+  .hero{padding:24px 16px 40px}
+  .tabs{padding:16px 16px 12px}.promo{margin:0 16px;padding:24px}.cta-wrap{padding:16px}.cta{height:56px}
+  .learn{margin-top:40px;padding:0 16px 56px}
+}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://wrap-weth.github.io/#website", "url": "https://wrap-weth.github.io/", "name": "Wrap WETH", "inLanguage": "en"}, {"@type": "WebPage", "@id": "https://wrap-weth.github.io/#webpage", "url": "https://wrap-weth.github.io/", "name": "Wrap WETH | Convert ETH to WETH 1:1, Both Ways", "description": "Wrap WETH at a 1:1 ratio: turn ETH into WETH or unwrap WETH to ETH. Calculate your amount, budget Ethereum gas, and review the WETH contract before you start.", "isPartOf": {"@id": "https://wrap-weth.github.io/#website"}, "about": {"@id": "https://wrap-weth.github.io/#app"}, "breadcrumb": {"@id": "https://wrap-weth.github.io/#breadcrumb"}, "hasPart": {"@id": "https://wrap-weth.github.io/#faq"}, "primaryImageOfPage": {"@type": "ImageObject", "url": "https://wrap-weth.github.io/og.png", "width": 1200, "height": 630}, "inLanguage": "en", "datePublished": "2026-10-09", "dateModified": "2026-10-09"}, {"@type": "SoftwareApplication", "@id": "https://wrap-weth.github.io/#app", "name": "Wrap WETH", "url": "https://wrap-weth.github.io/dashboard/", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "description": "ETH and WETH conversion with a 1:1 amount calculator and an Ethereum gas budget calculator.", "featureList": ["ETH to WETH amount calculation", "WETH to ETH amount calculation", "Ethereum gas budget calculation"], "image": "https://wrap-weth.github.io/og.png"}, {"@type": "BreadcrumbList", "@id": "https://wrap-weth.github.io/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://wrap-weth.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Ethereum tools", "item": "https://wrap-weth.github.io/dashboard/"}, {"@type": "ListItem", "position": 3, "name": "Wrap WETH"}]}, {"@type": "FAQPage", "@id": "https://wrap-weth.github.io/#faq", "isPartOf": {"@id": "https://wrap-weth.github.io/#webpage"}, "mainEntity": [{"@type": "Question", "name": "What is the difference between ETH and WETH?", "acceptedAnswer": {"@type": "Answer", "text": "ETH is Ethereum's native currency, used for gas and transfers. WETH is ETH held in a wrapper contract and represented as an ERC-20 token. Direct wrapping and unwrapping convert the token amount at 1:1."}}, {"@type": "Question", "name": "How do I wrap ETH into WETH?", "acceptedAnswer": {"@type": "Answer", "text": "Open the app, select Wrap, and enter your ETH amount. Keep additional ETH for gas, check the Ethereum network and WETH contract in your wallet, then confirm the deposit. The contract credits the same amount of WETH to your address."}}, {"@type": "Question", "name": "How do I unwrap WETH back to ETH?", "acceptedAnswer": {"@type": "Answer", "text": "Select Unwrap and enter the WETH amount. Confirm the withdrawal transaction in your wallet. The WETH9 contract removes that WETH balance and returns the equivalent ETH. Keep ETH in your wallet to pay the transaction fee before the withdrawal completes."}}, {"@type": "Question", "name": "Is there slippage when wrapping ETH?", "acceptedAnswer": {"@type": "Answer", "text": "A direct WETH9 deposit or withdrawal uses a fixed 1:1 conversion and has no liquidity-pool slippage. Network gas is paid separately in ETH. Trading WETH through a liquidity pool follows that pool's market price and fees."}}, {"@type": "Question", "name": "Do I need a token approval to wrap or unwrap?", "acceptedAnswer": {"@type": "Answer", "text": "A direct ETH deposit into WETH9 needs a payable transaction. A direct WETH9 withdrawal uses your own token balance. ERC-20 spending approvals apply when a separate contract, such as a router, spends WETH for you; check the spender and allowance before signing."}}, {"@type": "Question", "name": "How long does wrapping WETH take?", "acceptedAnswer": {"@type": "Answer", "text": "Wrapping and unwrapping each take one on-chain transaction with the WETH9 contract. The balance updates when the transaction is included in a block. Inclusion time depends on network demand and your fee settings; finality follows later."}}, {"@type": "Question", "name": "Can I use WETH on another network?", "acceptedAnswer": {"@type": "Answer", "text": "WETH exists on several networks, with network-specific contracts and balances. Wrapping on Ethereum keeps your assets on Ethereum. To move assets to another network, use a bridge route and check the destination token contract."}}, {"@type": "Question", "name": "Does WETH earn staking rewards?", "acceptedAnswer": {"@type": "Answer", "text": "Wrapping changes ETH into an ERC-20 token. WETH has no built-in staking yield. Rewards from lending, liquidity provision, or staking come from a separate protocol and its own terms."}}]}]}</script>
+<link rel="prerender" href="/dashboard/">
+<link rel="prefetch" href="/dashboard/" as="document">
+<link rel="preload" href="/dashboard/" as="document">
 </head>
 <body>
-<a class="c66a97e" href="#main">Skip to content</a>
-<header class="c6cb3a4"><div class="cd32551">
-<a class="c687609" href="dashboard/" aria-label="Wrap WETH app"><img src="assets/tokens/eth.svg" width="28" height="28" alt=""><span>Wrap WETH</span></a>
-<nav aria-label="Primary"><a href="#how">How it works</a><a href="#fees">Gas &amp; fees</a><a href="#faq">FAQ</a></nav>
-<a class="cca703b cc6cff8" href="dashboard/">Open app <span aria-hidden="true">&#8599;</span></a>
-</div></header>
-<main id="main">
-<div class="cd32551"><nav aria-label="Breadcrumb" style="padding-top:18px;font-size:12px;color:var(--mute)"><a href="/">Home</a> <span aria-hidden="true">/</span> <a href="dashboard/">Ethereum tools</a> <span aria-hidden="true">/</span> <span aria-current="page">Wrap WETH</span></nav></div>
-<section class="cf8579a"><div class="cd32551">
-<div class="c5099c5">
-<div class="cc47ce1">
-<h1>Wrap <span>WETH</span></h1>
-<p class="ceae24f" id="wrap-weth-answer">To wrap WETH, deposit ETH into the WETH9 contract and receive the same amount of WETH, an ERC-20 token. On Ethereum mainnet, one transaction converts ETH to WETH at a 1:1 ratio. Keep extra ETH for gas; unwrapping returns the equivalent ETH to your wallet.</p>
-<p class="ceae24f"><strong>Wrap WETH converts ETH into WETH at 1:1 and unwraps WETH back into ETH.</strong> Choose your direction, enter an amount, and keep a little ETH for gas.</p>
-<a class="cca703b" href="dashboard/">Start wrapping <span aria-hidden="true">&#8599;</span></a>
-<p class="cc80b03"><img src="assets/tokens/eth.svg" width="28" height="28" alt="">On Ethereum. In your wallet.</p>
-<div class="c0a29e6"><div><b>1 ETH = 1 WETH</b><span>Direct contract conversion</span></div><div><b>Both ways</b><span>Wrap or unwrap</span></div></div>
-</div>
-<div class="c3d5bb3">
-<div class="c0f7205" aria-hidden="true">1:1</div>
-<div class="c90bdaf">
-<a class="c8b8124" href="dashboard/" aria-label="Open the Wrap WETH app"></a>
-<div class="cddc03d"><h2 id="widget-title">Wrap ETH to WETH</h2><span class="c474b04"><img src="assets/tokens/eth.svg" width="28" height="28" alt="">Ethereum</span></div>
-<div class="cea668a" role="group" aria-label="Conversion direction"><button type="button" id="wrap-mode" aria-pressed="true">Wrap</button><button type="button" id="unwrap-mode" aria-pressed="false">Unwrap</button></div>
-<div class="c4b25e8"><label class="cf38764" for="amount" id="amount-label">You wrap</label><div class="cfbb4bd"><input id="amount" type="text" inputmode="decimal" value="1" maxlength="60" autocomplete="off" spellcheck="false" aria-describedby="amount-error"><span class="c765567"><img src="assets/tokens/eth.svg" width="28" height="28" alt="Ethereum ETH"><span id="from-token">ETH</span></span></div></div>
-<button class="cbca2b6" id="reverse" type="button" aria-label="Reverse wrap direction">&#8595;</button>
-<div class="c4dff59"><span class="cf38764">You receive</span><div class="cfbb4bd"><output id="receive" for="amount" aria-live="polite">1</output><span class="c765567"><img src="assets/tokens/eth.svg" width="28" height="28" alt="Ethereum underlying asset"><span id="to-token">WETH</span></span></div></div>
-<p class="cd44a2f" id="amount-error" aria-live="polite"></p>
-<div class="c16d472"><span>Conversion rate</span><b id="rate">1 ETH = 1 WETH</b></div>
-<a class="cca703b" id="continue" href="dashboard/">Continue to wrap <span aria-hidden="true">&#8599;</span></a>
-<p class="c8aecb1">Network gas is paid separately in ETH.</p>
-</div></div></div>
-<div class="cd63eaf"><span><b class="c52e87e" aria-hidden="true">&#10003;</b>ERC-20 compatible</span><span><b class="c52e87e" aria-hidden="true">&#10003;</b>Same-network conversion</span><span><b class="c52e87e" aria-hidden="true">&#10003;</b>Redeemable 1:1 for ETH</span></div>
-</div></section>
-<section id="wrap-weth-facts" aria-labelledby="wrap-weth-facts-title" style="padding:28px 0 32px;border-top:1px solid var(--line)"><div class="cd32551">
-<h2 id="wrap-weth-facts-title" style="font-size:28px;margin-bottom:16px">Wrap WETH key facts</h2>
-<div class="c623064" style="margin-top:0" tabindex="0" role="region" aria-label="Wrap WETH key facts"><table>
-<tbody>
-<tr><th scope="row">Network and tokens</th><td>Ethereum mainnet (chain ID 1); native ETH and ERC-20 WETH9. Wrapping keeps both on Ethereum.</td></tr>
-<tr><th scope="row">Conversion</th><td>1 ETH = 1 WETH in either direction; direct WETH9 deposits and withdrawals have no pool slippage.</td></tr>
-<tr><th scope="row">Fees</th><td>0% WETH9 conversion fee, plus gas in ETH. Example gas budget: 50,000 units at a 10 gwei maximum fee = 0.0005 ETH; actual cost uses gas consumed and the effective gas price.</td></tr>
-<tr><th scope="row">Transaction time</th><td>One transaction per wrap or unwrap; balances update at block inclusion. Ethereum slots are 12 seconds apart; inclusion depends on fee settings and network demand.</td></tr>
-<tr><th scope="row">What you need</th><td>An Ethereum wallet, ETH to wrap or WETH to unwrap, and ETH for gas in either direction. Direct WETH9 deposit and withdrawal need no ERC-20 spending approval.</td></tr>
-<tr><th scope="row">Custody</th><td>Your wallet controls the WETH balance; the WETH9 contract holds the backing ETH and releases it when you unwrap.</td></tr>
-</tbody></table></div>
-<p class="ce22e7e" style="margin-top:14px;font-size:12px">See the <a href="https://etherscan.io/address/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2#code" rel="nofollow noopener" target="_blank">WETH9 contract on Etherscan</a> and Ethereum documentation on <a href="https://ethereum.org/en/developers/docs/gas/" rel="nofollow noopener" target="_blank">gas fees</a> and <a href="https://ethereum.org/en/developers/docs/blocks/" rel="nofollow noopener" target="_blank">block timing</a>.</p>
-</div></section>
-<section class="ca6cb20" id="how"><div class="cd32551 cd2522c">
-<div><h2>How wrapping ETH<br>into WETH works</h2><p>WETH gives ETH the ERC-20 interface used by token-based applications. Deposit ETH into the WETH contract and receive an equal WETH balance, backed by the ETH held in that contract.</p><p class="ce22e7e">Unwrapping reverses the process: the contract removes WETH from your balance and releases the same amount of ETH. Your assets stay on the same network throughout.</p></div>
-<div class="cecd208"><div class="c06947b"><div class="c08d27b"><img src="assets/tokens/eth.svg" width="28" height="28" alt="ETH"><div><strong>ETH</strong><small>Native currency</small></div></div><span class="c21e8de" aria-hidden="true">&#8644;</span><div class="c08d27b"><img src="assets/tokens/eth.svg" width="28" height="28" alt="WETH underlying Ethereum asset"><div><strong>WETH</strong><small>ERC-20 token</small></div></div></div><div class="c18bfeb"><span>Deposit ETH to wrap</span><span>Withdraw ETH to unwrap</span></div>
-<ol class="c63d17f"><li><h3>Set the amount</h3><p>Choose Wrap or Unwrap and enter how much to convert.</p></li><li><h3>Review in wallet</h3><p>Check the network, contract, amount, and gas fee before confirming.</p></li><li><h3>Receive 1:1</h3><p>The new balance is available when the transaction is included in a block.</p></li></ol></div>
-</div></section>
-<section class="ca6cb20 c63ddf3" id="fees"><div class="cd32551 c4d5ac4">
-<div class="c21d0d3"><h2>WETH wrapping fees<br>and transaction time</h2><p>The WETH9 contract converts the full amount at 1:1. Ethereum gas is a separate cost, paid in ETH for each wrap or unwrap transaction.</p><div class="c4fa00f"><div><h3>Keep ETH for gas</h3><p>Leave a gas reserve before wrapping. Unwrapping also needs ETH upfront, even though the transaction returns ETH.</p></div><div><h3>One transaction</h3><p>Balances update on block inclusion. Network demand and fee settings affect the wait; finality follows later.</p></div></div></div>
-<div class="cead0c7"><h3>Budget your ETH for gas</h3><p>Enter the gas limit and maximum fee from your wallet. Your wrap amount above is included in the total below.</p><div class="c6e30b3"><label for="gas-limit">Gas limit (units)<input id="gas-limit" type="text" inputmode="numeric" value="50000" maxlength="10" autocomplete="off" aria-describedby="gas-error"></label><label for="gas-price">Max fee (gwei)<input id="gas-price" type="text" inputmode="decimal" value="10" maxlength="20" autocomplete="off" aria-describedby="gas-error"></label></div><p id="gas-error" class="cd44a2f" aria-live="polite"></p><div class="c3c899d" aria-live="polite"><div><span>Maximum gas budget</span><output id="gas-budget" for="gas-limit gas-price">0.0005 ETH</output></div><div><span id="total-label">ETH to have available</span><output id="total-budget" for="gas-limit gas-price amount">1.0005 ETH</output></div></div><p class="c03f2c8">Gas budget = gas limit &times; max fee &times; 10<sup>&minus;9</sup> ETH.<br>The charged fee uses gas consumed and the effective gas price. Unused gas budget stays in your wallet.</p></div>
-</div></section>
-<section class="ca6cb20" id="uses"><div class="cd32551"><div class="cc9e7e0"><h2>When to use ETH or WETH</h2><p class="ce22e7e">Choose the form your next transaction needs. Wrapping changes the token interface; ETH remains the underlying asset.</p></div><div class="c623064" tabindex="0" role="region" aria-label="Compare ETH and WETH"><table><thead><tr><th scope="col">What you want to do</th><th scope="col">ETH</th><th scope="col">WETH</th></tr></thead><tbody><tr><td>Pay Ethereum gas</td><td>Native gas currency</td><td>Unwrap to hold ETH for future fees</td></tr><tr><td>Use an ERC-20 application</td><td>Wrap first, or use an app with built-in wrapping</td><td>Compatible with ERC-20 interfaces</td></tr><tr><td>Place a marketplace offer</td><td>Used for native ETH payments</td><td>Used by marketplaces that accept WETH offers</td></tr><tr><td>Provide liquidity or collateral</td><td>Accepted by protocols with native ETH support</td><td>Used in supported WETH pools and lending markets</td></tr><tr><td>Move to another network</td><td>Requires a bridge route</td><td>Requires a bridge route</td></tr></tbody></table></div></div></section>
-<section class="ca6cb20 caa44ba" id="safety"><div class="cd32551 c9c67b5"><div><h2>Wrap WETH with the<br>right contract</h2><p class="ce22e7e">The contract address identifies the token. On Ethereum mainnet, check the WETH9 address below against the transaction in your wallet.</p><div class="cfc0278"><span>Ethereum mainnet &middot; WETH9 &middot; Chain ID 1</span><code>0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2</code></div></div><ul class="c1447b5"><li><h3>Match the network</h3><p>A WETH balance belongs to a specific chain. Use the contract for the network selected in your wallet.</p></li><li><h3>Read the transaction</h3><p>Direct wrapping calls deposit; direct unwrapping calls withdraw. Check the amount and destination contract before signing.</p></li><li><h3>Review token permissions</h3><p>A separate router may request a WETH allowance. Review the spender and amount. Direct WETH9 withdrawal uses your own balance.</p></li></ul></div></section>
-<section class="ca6cb20" id="faq"><div class="cd32551 ca60e9b"><div class="c5a8e3c"><h2>Wrap WETH<br>questions, answered</h2><p>Amounts, approvals, gas, and getting back to native ETH.</p></div><div class="caaa5ee"><details open><summary>What is the difference between ETH and WETH?</summary><p>ETH is Ethereum's native currency, used for gas and transfers. WETH is ETH held in a wrapper contract and represented as an ERC-20 token. Direct wrapping and unwrapping convert the token amount at 1:1.</p></details><details><summary>How do I wrap ETH into WETH?</summary><p>Open the app, select Wrap, and enter your ETH amount. Keep additional ETH for gas, check the Ethereum network and WETH contract in your wallet, then confirm the deposit. The contract credits the same amount of WETH to your address.</p></details><details><summary>How do I unwrap WETH back to ETH?</summary><p>Select Unwrap and enter the WETH amount. Confirm the withdrawal transaction in your wallet. The WETH9 contract removes that WETH balance and returns the equivalent ETH. Keep ETH in your wallet to pay the transaction fee before the withdrawal completes.</p></details><details><summary>Is there slippage when wrapping ETH?</summary><p>A direct WETH9 deposit or withdrawal uses a fixed 1:1 conversion and has no liquidity-pool slippage. Network gas is paid separately in ETH. Trading WETH through a liquidity pool follows that pool's market price and fees.</p></details><details><summary>Do I need a token approval to wrap or unwrap?</summary><p>A direct ETH deposit into WETH9 needs a payable transaction. A direct WETH9 withdrawal uses your own token balance. ERC-20 spending approvals apply when a separate contract, such as a router, spends WETH for you; check the spender and allowance before signing.</p></details><details><summary>How long does wrapping WETH take?</summary><p>Wrapping and unwrapping each take one on-chain transaction with the WETH9 contract. The balance updates when the transaction is included in a block. Inclusion time depends on network demand and your fee settings; finality follows later.</p></details><details><summary>Can I use WETH on another network?</summary><p>WETH exists on several networks, with network-specific contracts and balances. Wrapping on Ethereum keeps your assets on Ethereum. To move assets to another network, use a bridge route and check the destination token contract.</p></details><details><summary>Does WETH earn staking rewards?</summary><p>Wrapping changes ETH into an ERC-20 token. WETH has no built-in staking yield. Rewards from lending, liquidity provision, or staking come from a separate protocol and its own terms.</p></details></div></div></section>
-<section class="cc97cf3"><div class="cd32551"><div class="c1e20bb"><div><h2>Wrap ETH. Unwrap WETH.</h2><p>The same 1:1 conversion, whichever direction you choose.</p></div><a class="cca703b" href="dashboard/">Open Wrap WETH <span aria-hidden="true">&#8599;</span></a></div></div></section>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-cv" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 6 5 5 5-5"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.4 3 8.4 7 10 4-1.6 7-5.6 7-10V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-coins" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="9" cy="7" rx="5" ry="2.5"/><path d="M4 7v4c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V7"/><path d="M10 15.5c.6 1.2 2.6 2 5 2 2.8 0 5-1.1 5-2.5v-4c0-1.4-2.2-2.5-5-2.5"/><path d="M20 15v4c0 1.4-2.2 2.5-5 2.5s-5-1.1-5-2.5v-2"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/><path d="M12 14.5v2"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+<symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5s-6 6.4-6 10.5a6 6 0 0 0 12 0c0-4.1-6-10.5-6-10.5z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+<symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="7" rx="2"/><rect x="4" y="13" width="16" height="7" rx="2"/><path d="M8 7.5h.01M8 16.5h.01"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a7.8 7.8 0 0 0 0-2l2-1.5-2-3.4-2.3 1a7.6 7.6 0 0 0-1.7-1L15 2.5h-4l-.4 2.6c-.6.3-1.2.6-1.7 1l-2.3-1-2 3.4L4.6 11a7.8 7.8 0 0 0 0 2l-2 1.5 2 3.4 2.3-1c.5.4 1.1.7 1.7 1l.4 2.6h4l.4-2.6c.6-.3 1.2-.6 1.7-1l2.3 1 2-3.4z"/></symbol>
+</defs></svg>
+
+<header class="nav">
+  <a class="brand" href="index.html" aria-label="Wrap WETH home"><img src="icon.svg" alt=""><span>Wrap WETH</span></a>
+  <nav class="nlinks" aria-label="Primary">
+    <a href="#overview">What is it</a>
+    <a href="#compare">ETH vs WETH</a>
+    <a href="#how">How to wrap</a>
+    <a href="#fees">Fees &amp; gas</a>
+    <a href="#security">Security</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="chain" href="/dashboard/" style="text-decoration:none"><img src="assets/net-ethereum.svg" alt=""><span>Ethereum</span><svg class="cv" aria-hidden="true"><use href="#i-cv"/></svg></a>
+  <a class="connect" href="/dashboard/" style="text-decoration:none">Connect wallet</a>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Wrap WETH</h1>
+
+    <section class="card" aria-label="Wrap WETH">
+      <div class="tabs">
+        <button class="tab on" type="button">Wrap</button>
+        <button class="tab" type="button">Unwrap</button>
+        <span class="sp"></span>
+        <button class="ic gear" type="button" aria-label="Settings" data-toast="Settings are disabled in this demo."><svg aria-hidden="true"><use href="#i-gear"/></svg></button>
+      </div>
+
+      <div class="promo">
+        <div class="promo-txt">
+          <h2 class="promo-h">Wrap ETH into WETH at 1:1</h2>
+          <p class="promo-sub">Calls deposit() on the canonical WETH contract. No approval, no slippage, only network gas.</p>
+        </div>
+        <div class="promo-grid" aria-hidden="true">
+          <span class="pico"><img src="assets/ethereum-eth.svg" alt=""></span>
+          <span class="pico"><img src="assets/weth-round.svg" alt=""></span>
+          <span class="pico"><img src="assets/net-arbitrum.svg" alt=""></span>
+          <span class="pico"><img src="assets/net-optimism.svg" alt=""></span>
+        </div>
+      </div>
+
+      <div class="cta-wrap"><a class="cta" href="/dashboard/" style="display:flex;align-items:center;justify-content:center;text-decoration:none">Wrap ETH</a></div>
+    </section>
+  </section>
+
+  <section class="learn" id="learn">
+    <p class="learn-h">Learn about wrapping WETH</p>
+    <div class="lrow">
+      <details class="lcard" name="learn" id="overview"><summary><span>What is it</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>What it means to wrap WETH</h2>
+<p>To <strong>wrap WETH</strong> is to send native ETH to the canonical WETH contract by calling its <code>deposit()</code> function. The contract keeps your ETH and mints the same amount of WETH to your wallet, one for one.</p>
+<h3>Why wrap</h3>
+<p>Native ETH is the network's own coin and does not follow the ERC-20 token standard. DEX pools, limit-order protocols, lending markets and NFT marketplace bids expect an ERC-20 token, so they take WETH rather than ETH.</p>
+<h3>Which contract</h3>
+<p>This interface works on Ethereum and on L2s that have a canonical WETH: Arbitrum, Optimism and Base. On each chain it calls that chain's own WETH contract, so check that your wallet is on the network you intend. Background: <a href="https://ethereum.org/en/wrapped-eth/" target="_blank" rel="nofollow noopener">wrapped ether on ethereum.org</a>.</p></div></details>
+
+      <details class="lcard" name="learn" id="compare"><summary><span>ETH vs WETH</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>ETH vs WETH</h2>
+<p>The two hold the same value and convert 1:1, but smart contracts treat them differently.</p>
+<div class="tbl"><table><caption>Native ETH compared with WETH</caption><thead><tr><th scope="col"></th><th scope="col">ETH</th><th scope="col">WETH</th></tr></thead><tbody><tr><th scope="row">Standard</th><td>native coin, not a token</td><td>ERC-20 token</td></tr><tr><th scope="row">Used for</th><td>gas, plain transfers</td><td>DEX pools, lending, limit orders, NFT bids</td></tr><tr><th scope="row">Gas</th><td>pays network gas</td><td>cannot pay gas</td></tr><tr><th scope="row">Approval</th><td>none needed</td><td>allowance needed before a contract can spend it</td></tr></tbody></table></div>
+<h3>Same value, different form</h3>
+<p>Wrapping does not change what you own. It changes the form so that contracts built for ERC-20 tokens can use it, and unwrapping reverses it at any time.</p></div></details>
+
+      <details class="lcard" name="learn" id="how"><summary><span>How to wrap</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>How to wrap ETH into WETH</h2>
+<h3>Step by step</h3>
+<ol>
+<li>Connect your wallet and select the network: Ethereum, Arbitrum, Optimism or Base.</li>
+<li>Choose wrap and enter how much ETH to convert, or use the max button, which leaves room for gas.</li>
+<li>Review the amount and the estimated gas. The WETH you receive equals the ETH you send.</li>
+<li>Sign the <code>deposit()</code> transaction in your wallet and wait for it to confirm.</li>
+<li>WETH appears in your wallet on that chain. Add the token if your wallet does not show it yet.</li>
+</ol>
+<p>To go the other way, use unwrap, which burns WETH and returns ETH one for one.</p></div></details>
+
+      <details class="lcard" name="learn" id="fees"><summary><span>Fees &amp; gas</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>What wrapping costs</h2>
+<h3>Gas only</h3>
+<p>Wrapping is a single on-chain transaction, so the only cost is network gas paid in ETH. There is no approval step, no slippage and no price impact because the rate is fixed at 1:1. See how <a href="https://ethereum.org/en/developers/docs/gas/" target="_blank" rel="nofollow noopener">gas works</a>.</p>
+<h3>Gas on L2s</h3>
+<p>On Arbitrum, Optimism and Base the transaction is paid in ETH on that network, and the wallet shows the estimate before you sign. The amount varies with network conditions.</p>
+<h3>Keep ETH unwrapped for gas</h3>
+<p>WETH cannot pay for gas. Leave some ETH in the wallet for this wrap, for later approvals and for unwrapping, or you will not be able to sign.</p></div></details>
+
+      <details class="lcard" name="learn" id="security"><summary><span>Security</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>Staying safe when you wrap</h2>
+<h3>Non-custodial by design</h3>
+<p>You connect your own wallet and sign every transaction yourself. The interface prepares the call and never holds your funds or keys.</p>
+<h3>Before you sign</h3>
+<ul>
+<li>Confirm the network and that the wallet prompt targets the WETH contract for that chain; lookalike tokens named WETH exist.</li>
+<li>Wrapping needs no approval, so be wary of any prompt asking for a token allowance during a wrap.</li>
+<li>Check the amount in the wallet matches what you entered.</li>
+<li>WETH is a smart contract, and smart contracts can contain bugs, so risk is never zero.</li>
+</ul></div></details>
+
+      <details class="lcard" name="learn" id="faq"><summary><span>FAQ</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody lfaq"><h2>Wrap WETH FAQ</h2>
+<h3>What does it mean to wrap WETH?</h3>
+<p>Wrapping sends native ETH to the WETH contract, which mints the same amount of WETH to your wallet. WETH is an ERC-20 token, so DEXs, lending markets and order protocols can use it.</p>
+<h3>Is wrapping ETH into WETH always 1:1?</h3>
+<p>Yes. The contract mints exactly as much WETH as the ETH you deposit, and unwrapping returns ETH at the same rate. There is no market price involved, so no slippage or price impact.</p>
+<h3>Do I need to approve anything before wrapping?</h3>
+<p>No. Wrapping calls deposit() with your ETH attached, so no token allowance is required. You pay only network gas for that one transaction.</p>
+<h3>Which networks can I wrap on?</h3>
+<p>Ethereum, Arbitrum, Optimism and Base, each using its own canonical WETH contract. Make sure your wallet is on the right network before you sign, because WETH on one chain is a separate balance from WETH on another.</p>
+<h3>Why keep some ETH unwrapped?</h3>
+<p>Gas is always paid in native ETH, never in WETH. Without a small ETH balance you cannot sign the wrap, a later approval or an unwrap.</p>
+<h3>Can I turn WETH back into ETH?</h3>
+<p>Yes, at any time. Unwrapping burns your WETH and returns the same amount of ETH, minus the gas for that transaction.</p></div></details>
+    </div>
+  </section>
 </main>
-<footer class="c62107e"><div class="cd32551"><div class="cb34a08"><span class="c687609">Wrap WETH</span><nav aria-label="Footer"><a href="#how">How it works</a><a href="#fees">Gas &amp; fees</a><a href="#safety">WETH contract</a><a href="#faq">FAQ</a></nav><span class="cf40e07">&copy; 2026 Wrap WETH</span><span class="cf40e07">Updated <time datetime="2026-10-09">Oct 09, 2026</time></span></div></div></footer>
+
+<footer>
+  <div class="foot"><span>&copy; 2026 Wrap WETH</span><span class="sep">&middot;</span><a href="legal.html#privacy">Privacy</a><span class="sep">&middot;</span><a href="legal.html#terms">Terms</a><span class="sep">&middot;</span><span>Non-custodial &middot; ETH and L2s</span></div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
-(()=>{
-const $=id=>document.getElementById(id);
-let unwrap=false;
-const unit=10n**18n;
-function decimal(value,places){
- const v=value.trim();
- if(!/^(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)$/.test(v))return null;
- const [whole,part='']=v.split('.');
- if(part.length>places)return null;
- return BigInt(whole||'0')*(10n**BigInt(places))+BigInt(part.padEnd(places,'0')||'0');
-}
-function eth(value){const whole=value/unit;const part=(value%unit).toString().padStart(18,'0').replace(/0+$/,'');return whole.toString()+(part?'.'+part:'');}
-function update(){
- const amount=decimal($('amount').value,18);
- const valid=amount!==null&&amount>0n&&amount<2n**256n;
- $('amount').setAttribute('aria-invalid',String(!valid));
- $('amount-error').textContent=valid?'':'Enter a positive amount with up to 18 decimal places.';
- $('receive').textContent=valid?eth(amount):'\u2014';
- const gas=decimal($('gas-limit').value,0),price=decimal($('gas-price').value,9);
- const validGas=gas!==null&&gas>0n,validPrice=price!==null&&price>0n;
- $('gas-limit').setAttribute('aria-invalid',String(!validGas));
- $('gas-price').setAttribute('aria-invalid',String(!validPrice));
- $('gas-error').textContent=validGas&&validPrice?'':'Enter whole gas units and a positive fee with up to 9 decimal places.';
- $('total-label').textContent=unwrap?'ETH to keep for gas':'ETH to have available';
- if(validGas&&validPrice){const fee=gas*price;$('gas-budget').textContent=eth(fee)+' ETH';$('total-budget').textContent=unwrap?eth(fee)+' ETH':valid?eth(amount+fee)+' ETH':'Enter an amount';}
- else{$('gas-budget').textContent='\u2014';$('total-budget').textContent='\u2014';}
-}
-function direction(value){
- unwrap=value;
- $('wrap-mode').setAttribute('aria-pressed',String(!unwrap));$('unwrap-mode').setAttribute('aria-pressed',String(unwrap));
- $('widget-title').textContent=unwrap?'Unwrap WETH to ETH':'Wrap ETH to WETH';
- $('amount-label').textContent=unwrap?'You unwrap':'You wrap';
- $('from-token').textContent=unwrap?'WETH':'ETH';$('to-token').textContent=unwrap?'ETH':'WETH';
- $('rate').textContent=unwrap?'1 WETH = 1 ETH':'1 ETH = 1 WETH';
- $('continue').firstChild.textContent=unwrap?'Continue to unwrap ':'Continue to wrap ';
- update();
-}
-$('wrap-mode').addEventListener('click',()=>direction(false));$('unwrap-mode').addEventListener('click',()=>direction(true));$('reverse').addEventListener('click',()=>direction(!unwrap));
-['amount','gas-limit','gas-price'].forEach(id=>$(id).addEventListener('input',update));
-update();
+(function(){
+"use strict";
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){x.classList.toggle('on',x===t);});});});
+
+var toast=document.getElementById('toast'),tT;
+function notify(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tT);tT=setTimeout(function(){toast.classList.remove('show');},3000);}
+[].slice.call(document.querySelectorAll('[data-toast]')).forEach(function(b){b.addEventListener('click',function(){notify(b.getAttribute('data-toast'));});});
+
+function openHash(){var id=location.hash.slice(1);if(!id)return;var c=document.getElementById(id);if(c&&c.matches&&c.matches('.lcard[name="learn"]'))c.open=true;}
+window.addEventListener('hashchange',openHash);openHash();
+[].slice.call(document.querySelectorAll('.nlinks a')).forEach(function(a){a.addEventListener('click',function(){var c=document.getElementById(a.getAttribute('href').slice(1));if(c&&c.matches('.lcard'))c.open=true;});});
 })();
 </script>
-</body>
-</html>
+</body></html>

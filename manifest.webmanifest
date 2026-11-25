@@ -1,0 +1,1 @@
+{"name":"Wrap WETH","short_name":"Wrap WETH","description":"Wrap WETH: convert native ETH into WETH 1:1 by calling deposit() on the canonical contract. Non-custodial, no approval or slippage. Works on Ethereum and L2s.","start_url":"/","display":"standalone","background_color":"#f4f5f9","theme_color":"#f4f5f9","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml"}]}
